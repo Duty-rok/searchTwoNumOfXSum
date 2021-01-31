@@ -68,7 +68,7 @@ namespace searchTwoNumOfXSum
             WriteLine();
             return result;
         }
-        static void InputData(out int size, out int summOfNums)//input of size of array and number of comparing
+        static void InputData(out int size, out int summOfNums)//input of size of array and number of comparing from user
         {
             size = 0;
             summOfNums = 0;
@@ -121,21 +121,21 @@ namespace searchTwoNumOfXSum
                 buffer.Item2 = right[rightIn];
                 if (buffer.Item1 > buffer.Item2)
                 {
-                    rec = RecordIn.recordFromRight;
+                    rec = RecordIn.recordFromRight;//record is done from right, and we remembered it
                     result[resIn++] = buffer.Item2;
                     rightIn++;
                 }
                 else
                 {
-                    rec = RecordIn.recordFromLeft;
+                    rec = RecordIn.recordFromLeft;//the same only for left array
                     result[resIn++] = buffer.Item1;
                     leftIn++;
                 }
             }
-            if (rec == RecordIn.recordFromLeft)
+            if (rec == RecordIn.recordFromLeft)//if left array is over, take off all elements from right array
                 for (; rightIn < right.Length; rightIn++)
                     result[resIn++] = right[rightIn];
-            else
+            else //converesly, take all from left
                 for (; leftIn < left.Length; leftIn++)
                     result[resIn++] = left[leftIn];
             return result;
